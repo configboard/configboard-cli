@@ -13,7 +13,7 @@ var Cmd = &cobra.Command{
 	Run: func(c *cobra.Command, args []string) {
 		path := args[0]
 		value := args[1]
-		api.SetOrDie("http://127.0.0.1:8000", path, value)
+		api.SetOrDie(root.FlagServer, path, value)
 	},
 }
 

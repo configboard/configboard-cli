@@ -14,7 +14,7 @@ var Cmd = &cobra.Command{
 	Args:  cobra.ExactArgs(1),
 	Run: func(c *cobra.Command, args []string) {
 		path := args[0]
-		fmt.Printf("%s\n", api.GetOrDie("http://127.0.0.1:8000", path))
+		fmt.Printf("%s\n", api.GetOrDie(root.FlagServer, path))
 	},
 }
 
