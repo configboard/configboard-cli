@@ -2,6 +2,7 @@ package api
 
 import (
 	"bytes"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -32,6 +33,11 @@ func Get(origin, key string) (string, error) {
 	if err != nil {
 		return "", err
 	}
+
+	if resp.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("HTTP status code: %d", resp.StatusCode)
+	}
+
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return "", err
