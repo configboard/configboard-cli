@@ -20,6 +20,7 @@ func initViper() {
 
 	viper.SetConfigName(".configboard-cli")
 	viper.SetConfigType("yaml")
+	viper.AddConfigPath("$HOME")
 	viper.AddConfigPath(".")
 
 	viper.ReadInConfig()
