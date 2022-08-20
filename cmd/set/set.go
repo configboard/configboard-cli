@@ -7,7 +7,7 @@ import (
 )
 
 var Cmd = &cobra.Command{
-	Use:   "set",
+	Use:   "set <path> <value>",
 	Short: "Set value from ConfigBoard",
 	Args:  cobra.ExactArgs(2),
 	Run: func(c *cobra.Command, args []string) {

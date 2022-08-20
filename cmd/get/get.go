@@ -12,7 +12,7 @@ import (
 var FlagDefault string
 
 var Cmd = &cobra.Command{
-	Use:   "get",
+	Use:   "get <path>",
 	Short: "Get value from ConfigBoard",
 	Args:  cobra.ExactArgs(1),
 	Run: func(c *cobra.Command, args []string) {
