@@ -79,3 +79,23 @@ func ListOrDie(origin, prefix string) []string {
 	}
 	return value
 }
+
+func Delete(origin, key string) error {
+	resp, err := http.Get(origin + "/api/v1/delete/" + key)
+	if err != nil {
+		return err
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		return fmt.Errorf("HTTP status code: %d", resp.StatusCode)
+	}
+
+	return nil
+}
+
+func DeleteOrDie(origin, key string) {
+	err := Delete(origin, key)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
