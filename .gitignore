@@ -14,3 +14,6 @@ configboard-cli
 *.exe
 /dist/**
 cobra-docs
+
+# App
+.configboard-cli.yml
