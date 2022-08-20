@@ -43,6 +43,19 @@ func init() {
 		"Configboard server",
 	)
 	if server == "" {
-		Cmd.MarkPersistentFlagRequired("server")
+		markAsPersistent(Cmd, "server")
 	}
+}
+
+func markAsPersistent(cmd *cobra.Command, flagName string) {
+	if len(os.Args) > 2 && os.Args[1] == "completion" {
+		return
+	}
+	if len(os.Args) > 2 && os.Args[1] == "help" {
+		return
+	}
+	if len(os.Args) > 2 && os.Args[1] == "config" {
+		return
+	}
+	cmd.MarkPersistentFlagRequired(flagName)
 }
