@@ -2,6 +2,7 @@ package cmd
 
 import (
 	_ "github.com/configboard/configboard-cli/cmd/config"
+	_ "github.com/configboard/configboard-cli/cmd/delete"
 	_ "github.com/configboard/configboard-cli/cmd/equals"
 	_ "github.com/configboard/configboard-cli/cmd/get"
 	_ "github.com/configboard/configboard-cli/cmd/list"
