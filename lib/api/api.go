@@ -53,3 +53,29 @@ func GetOrDie(origin, key string) string {
 	}
 	return value
 }
+
+func List(origin, prefix string) ([]string, error) {
+	resp, err := http.Get(origin + "/api/v1/list/" + prefix)
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("HTTP status code: %d", resp.StatusCode)
+	}
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+	bodyStr := string(body)
+	return strings.Split(strings.TrimSuffix(bodyStr, "\n"), "\n"), nil
+}
+
+func ListOrDie(origin, prefix string) []string {
+	value, err := List(origin, prefix)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return value
+}
